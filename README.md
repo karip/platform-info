@@ -20,4 +20,4 @@ The tests also print out the platform info:
 
 ## License
 
-All is licensed under Creative Commons Zero (CC0-1.0).
+All files and source code are licensed under Creative Commons Zero (CC0-1.0).
