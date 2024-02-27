@@ -1,4 +1,4 @@
-name: cross-platform tests
+name: Cross-platform tests
 
 on:
   push:
