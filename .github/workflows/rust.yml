@@ -22,7 +22,7 @@ jobs:
       - name: Install Rust
         run: rustup update stable
       - name: Install cross-compilation tools
-        uses: taiki-e/setup-cross-toolchain-action@v1.20
+        uses: taiki-e/setup-cross-toolchain-action@v1.20.0
         with:
           target: ${{ matrix.target }}
       - run: cargo test --verbose -- --nocapture
