@@ -76,7 +76,8 @@ mod tests {
 
     #[test]
     fn print_values() {
-        println!("CPU Architecture: {}", target_arch());
+        println!("-*-*-*-");
+        println!("CPU architecture: {}", target_arch());
         println!("Endianness: {}", endianness());
         println!("Pointer width: {}-bit", pointer_width());
     }

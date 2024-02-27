@@ -9,12 +9,12 @@ endianness and pointer width.
 This repository also shows how to use GitHub actions to test
 the code on 64-bit x86_64 little-endian and 32-bit PowerPC big-endian CPUs.
 It uses [setup-cross-toolchain-action](https://github.com/marketplace/actions/setup-toolchains-for-cross-compilation-and-cross-testing-for-rust) to run the actions for `x86_64-unknown-linux-gnu` and `powerpc-unknown-linux-gnu`.
-See the [rust.yml](.github/workflows/rust.yml) file how the action is configured.
+The [rust.yml](.github/workflows/rust.yml) file shows how the action is configured.
 
 ## Running
 
     > cargo run
-    CPU Architecture: aarch64
+    CPU architecture: aarch64
     Endianness: little-endian
     Pointer width: 64-bit
 
