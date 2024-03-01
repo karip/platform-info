@@ -1,73 +1,57 @@
-
-fn main() {
-    println!("CPU architecture: {}", target_arch());
-    println!("Endianness: {}", endianness());
-    println!("Pointer width: {}-bit", pointer_width());
-}
+//! Simple library to return CPU architecture, endianness and pointer width (`usize::BITS`).
 
 #[cfg(target_arch = "aarch64")]
-fn target_arch() -> &'static str {
+pub fn arch() -> &'static str {
     "aarch64"
 }
 
 #[cfg(target_arch = "arm")]
-fn target_arch() -> &'static str {
+pub fn arch() -> &'static str {
     "arm"
 }
 
 #[cfg(target_arch = "mips")]
-fn target_arch() -> &'static str {
+pub fn arch() -> &'static str {
     "mips"
 }
 
 #[cfg(target_arch = "powerpc")]
-fn target_arch() -> &'static str {
+pub fn arch() -> &'static str {
     "powerpc"
 }
 
 #[cfg(target_arch = "powerpc64")]
-fn target_arch() -> &'static str {
+pub fn arch() -> &'static str {
     "powerpc64"
 }
 
 #[cfg(target_arch = "x86")]
-fn target_arch() -> &'static str {
+pub fn arch() -> &'static str {
     "x86"
 }
 
 #[cfg(target_arch = "x86_64")]
-fn target_arch() -> &'static str {
+pub fn arch() -> &'static str {
     "x86_64"
 }
 
 #[cfg(target_arch = "avr")]
-fn target_arch() -> &'static str {
+pub fn arch() -> &'static str {
     "avr"
 }
 
 #[cfg(target_endian = "big")]
-fn endianness() -> &'static str {
+pub fn endianness() -> &'static str {
     "big-endian"
 }
 
 #[cfg(target_endian = "little")]
-fn endianness() -> &'static str {
+pub fn endianness() -> &'static str {
     "little-endian"
 }
 
-#[cfg(target_pointer_width = "16")]
-fn pointer_width() -> u8 {
-    16
-}
-
-#[cfg(target_pointer_width = "32")]
-fn pointer_width() -> u8 {
-    32
-}
-
-#[cfg(target_pointer_width = "64")]
-fn pointer_width() -> u8 {
-    64
+pub fn pointer_width() -> u32 {
+    usize::BITS
 }
 
 #[cfg(test)]
@@ -77,9 +61,9 @@ mod tests {
     #[test]
     fn print_values() {
         println!("-*-*-*-");
-        println!("CPU architecture: {}", target_arch());
+        println!("CPU architecture: {}", arch());
         println!("Endianness: {}", endianness());
-        println!("Pointer width: {}-bit", pointer_width());
+        println!("Pointer width (usize::BITS): {} bits", pointer_width());
     }
 
     #[test]
