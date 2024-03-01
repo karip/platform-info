@@ -1,55 +1,39 @@
-//! Simple library to return CPU architecture, endianness and pointer width (`usize::BITS`).
+//! A silly little library to return CPU architecture, endianness and pointer width (`usize::BITS`).
 
-#[cfg(target_arch = "aarch64")]
+/// Returns the cfg target_arch value.
 pub fn arch() -> &'static str {
-    "aarch64"
+    if cfg!(target_arch = "aarch64") {
+        "aarch64"
+    } else if cfg!(target_arch = "arm") {
+        "arm"
+    } else if cfg!(target_arch = "mips") {
+        "mips"
+    } else if cfg!(target_arch = "powerpc") {
+        "powerpc"
+    } else if cfg!(target_arch = "powerpc64") {
+        "powerpc64"
+    } else if cfg!(target_arch = "x86") {
+        "x86"
+    } else if cfg!(target_arch = "x86_64") {
+        "x86_64"
+    } else if cfg!(target_arch = "avr") {
+        "avr"
+    } else {
+        "unknown"
+    }
 }
 
-#[cfg(target_arch = "arm")]
-pub fn arch() -> &'static str {
-    "arm"
-}
-
-#[cfg(target_arch = "mips")]
-pub fn arch() -> &'static str {
-    "mips"
-}
-
-#[cfg(target_arch = "powerpc")]
-pub fn arch() -> &'static str {
-    "powerpc"
-}
-
-#[cfg(target_arch = "powerpc64")]
-pub fn arch() -> &'static str {
-    "powerpc64"
-}
-
-#[cfg(target_arch = "x86")]
-pub fn arch() -> &'static str {
-    "x86"
-}
-
-#[cfg(target_arch = "x86_64")]
-pub fn arch() -> &'static str {
-    "x86_64"
-}
-
-#[cfg(target_arch = "avr")]
-pub fn arch() -> &'static str {
-    "avr"
-}
-
-#[cfg(target_endian = "big")]
+/// Returns the cfg target_endian value.
 pub fn endianness() -> &'static str {
-    "big-endian"
+    if cfg!(target_endian = "big") {
+        "big-endian"
+    } else {
+        "little-endian"
+    }
+
 }
 
-#[cfg(target_endian = "little")]
-pub fn endianness() -> &'static str {
-    "little-endian"
-}
-
+/// Returns the `usize::BITS` value.
 pub fn pointer_width() -> u32 {
     usize::BITS
 }
