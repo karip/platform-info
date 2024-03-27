@@ -14,7 +14,7 @@ The [rust.yml](.github/workflows/rust.yml) file shows how the action is configur
 
 ## Running the example
 
-The library can be seen in action by running a simple Rust example to print out
+The library can be seen in action by running the example to print out
 platform CPU architecture, endianness and pointer width (`usize::BITS`).
 
     > cargo run --example platform-info
@@ -24,7 +24,7 @@ platform CPU architecture, endianness and pointer width (`usize::BITS`).
 
 ## Manual testing
 
-The application includes few tests, which also print out the platform info.
+The library includes few tests, which also print out the platform info.
 Here's how to run the tests manually on different platforms.
 
 ### 64-bit little-endian x86_64
