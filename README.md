@@ -22,12 +22,31 @@ platform CPU architecture, endianness and pointer width (`usize::BITS`).
     Endianness: little-endian
     Pointer width (usize::BITS): 64 bits
 
-## Testing
+## Manual testing
 
-The application includes tests, which check that the library returns correct values.
-The tests also print out the platform info:
+The application includes few tests, which also print out the platform info.
+Here's how to run the tests manually on different platforms.
+
+### 64-bit little-endian x86_64
+
+Running the tests for these systems is usually trivial because most computers are
+64-bit little-endian. Just run:
 
     cargo test -- --nocapture
+
+If the system is not 64-bit little-endian, then install and use [cross](https://github.com/cross-rs/cross):
+
+    // install docker or podman, on Ubuntu: apt-get -y install podman
+    cargo install cross
+    cross test --target x86_64-unknown-linux-gnu -- --nocapture
+
+### 32-bit big-endian PowerPC
+
+Install and use [cross](https://github.com/cross-rs/cross):
+
+    // install docker or podman, on Ubuntu: apt-get -y install podman
+    cargo install cross
+    cross test --target powerpc-unknown-linux-gnu -- --nocapture
 
 ## License
 
