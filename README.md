@@ -3,19 +3,22 @@
 
 [![Cross-platform tests](https://github.com/karip/platform-info/actions/workflows/rust.yml/badge.svg)](https://github.com/karip/platform-info/actions/workflows/rust.yml)
 
-This repository shows how to use GitHub actions to test a Rust library
-on different CPU architectures:
+This repository shows how to use a GitHub action to test a Rust library
+for different CPU architectures:
 
  - 64-bit little-endian x86_64
  - 32-bit big-endian PowerPC
 
-It uses [setup-cross-toolchain-action](https://github.com/marketplace/actions/setup-toolchains-for-cross-compilation-and-cross-testing-for-rust) to run the actions for `x86_64-unknown-linux-gnu` and `powerpc-unknown-linux-gnu`.
+It uses [setup-cross-toolchain-action](https://github.com/taiki-e/setup-cross-toolchain-action)
+to run the tests for `x86_64-unknown-linux-gnu` and `powerpc-unknown-linux-gnu`.
+The action can run some targets natively (x86_64 has a "native" runner) and
+some targets are emulated using qemu (powerpc has a "qemu-user" runner).
 The [rust.yml](.github/workflows/rust.yml) file shows how the action is configured.
 
 ## Running the example
 
-The library can be seen in action by running the example to print out
-platform CPU architecture, endianness and pointer width (`usize::BITS`).
+A simple example can be run locally to print out platform CPU architecture, endianness and
+pointer width (`usize::BITS`):
 
     > cargo run --example platform-info
     CPU architecture: aarch64
@@ -24,8 +27,7 @@ platform CPU architecture, endianness and pointer width (`usize::BITS`).
 
 ## Manual testing
 
-The library includes few tests, which also print out the platform info.
-Here's how to run the tests manually on different platforms.
+Here's how to run the tests manually for different platforms.
 
 ### 64-bit little-endian x86_64
 
@@ -34,9 +36,10 @@ Running the tests for these systems is usually trivial because most computers ar
 
     cargo test -- --nocapture
 
-If the system is not 64-bit little-endian, then install and use [cross](https://github.com/cross-rs/cross):
+If the host system is not 64-bit little-endian, then install and use
+[cross](https://github.com/cross-rs/cross):
 
-    // install docker or podman, on Ubuntu: apt-get -y install podman
+    # install docker or podman, on Ubuntu: apt-get -y install podman
     cargo install cross
     cross test --target x86_64-unknown-linux-gnu -- --nocapture
 
@@ -44,7 +47,7 @@ If the system is not 64-bit little-endian, then install and use [cross](https://
 
 Install and use [cross](https://github.com/cross-rs/cross):
 
-    // install docker or podman, on Ubuntu: apt-get -y install podman
+    # install docker or podman, on Ubuntu: apt-get -y install podman
     cargo install cross
     cross test --target powerpc-unknown-linux-gnu -- --nocapture
 
