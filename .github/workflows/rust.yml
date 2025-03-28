@@ -19,10 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Rust
+      - name: Update to the latest Rust
         run: rustup update stable
       - name: Install cross-compilation tools
-        uses: taiki-e/setup-cross-toolchain-action@v1.20.0
+        uses: taiki-e/setup-cross-toolchain-action@v1.28.3
         with:
           target: ${{ matrix.target }}
+      # for each target in matrix.target, setup-cross-toolchain-action sets
+      # the `CARGO_BUILD_TARGET` environment variable for this command:
       - run: cargo test --verbose -- --nocapture
