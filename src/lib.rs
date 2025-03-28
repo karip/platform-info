@@ -1,4 +1,5 @@
-//! A silly little library to return CPU architecture, endianness and pointer width (`usize::BITS`).
+//! A silly little library to return CPU architecture, endianness, pointer width (`usize::BITS`)
+//! and vendor.
 
 #![no_std]
 
@@ -8,18 +9,56 @@ pub fn arch() -> &'static str {
         "aarch64"
     } else if cfg!(target_arch = "arm") {
         "arm"
+    } else if cfg!(target_arch = "avr") {
+        "avr"
+    } else if cfg!(target_arch = "arm64ec") {
+        "arm64ec"
+    } else if cfg!(target_arch = "bpf") {
+        "bpf"
+    } else if cfg!(target_arch = "csky") {
+        "csky"
+    } else if cfg!(target_arch = "hexagon") {
+        "hexagon"
+    } else if cfg!(target_arch = "loongarch64") {
+        "loongarch64"
+    } else if cfg!(target_arch = "m68k") {
+        "m68k"
     } else if cfg!(target_arch = "mips") {
         "mips"
+    } else if cfg!(target_arch = "mips32r6") {
+        "mips32r6"
+    } else if cfg!(target_arch = "mips64") {
+        "mips64"
+    } else if cfg!(target_arch = "mips64r6") {
+        "mips64r6"
+    } else if cfg!(target_arch = "msp430") {
+        "msp430"
+    } else if cfg!(target_arch = "nvptx64") {
+        "nvptx64"
     } else if cfg!(target_arch = "powerpc") {
         "powerpc"
     } else if cfg!(target_arch = "powerpc64") {
         "powerpc64"
+    } else if cfg!(target_arch = "riscv32") {
+        "riscv32"
+    } else if cfg!(target_arch = "riscv64") {
+        "riscv64"
+    } else if cfg!(target_arch = "s390x") {
+        "s390x"
+    } else if cfg!(target_arch = "sparc") {
+        "sparc"
+    } else if cfg!(target_arch = "sparc64") {
+        "sparc64"
+    } else if cfg!(target_arch = "wasm32") {
+        "wasm32"
+    } else if cfg!(target_arch = "wasm64") {
+        "wasm64"
     } else if cfg!(target_arch = "x86") {
         "x86"
     } else if cfg!(target_arch = "x86_64") {
         "x86_64"
-    } else if cfg!(target_arch = "avr") {
-        "avr"
+    } else if cfg!(target_arch = "xtensa") {
+        "xtensa"
     } else {
         "unknown"
     }
@@ -40,6 +79,7 @@ pub fn pointer_width() -> u32 {
     usize::BITS
 }
 
+/// Returns the cfg target_vendor value.
 pub fn vendor() -> &'static str {
     if cfg!(target_vendor = "apple") {
         "apple"
