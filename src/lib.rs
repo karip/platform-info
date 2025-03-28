@@ -172,4 +172,10 @@ mod tests {
     fn test_for_pointer_width_64() {
         assert_eq!(pointer_width(), 64);
     }
+
+    #[test]
+    #[ignore]
+    fn test_ignored() {
+        assert_eq!(pointer_width(), 0);
+    }
 }
