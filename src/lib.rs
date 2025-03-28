@@ -63,4 +63,24 @@ mod tests {
             assert_eq!(value.to_ne_bytes(), [ 2, 1 ]);
         }
     }
+
+    // conditional tests based on pointer width
+
+    #[test]
+    #[cfg(target_pointer_width = "16")]
+    fn test_for_pointer_width_16() {
+        assert_eq!(pointer_width(), 16);
+    }
+
+    #[test]
+    #[cfg(target_pointer_width = "32")]
+    fn test_for_pointer_width_32() {
+        assert_eq!(pointer_width(), 32);
+    }
+
+    #[test]
+    #[cfg(target_pointer_width = "64")]
+    fn test_for_pointer_width_64() {
+        assert_eq!(pointer_width(), 64);
+    }
 }
