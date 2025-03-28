@@ -1,5 +1,5 @@
-//! A silly little library to return CPU architecture, endianness, pointer width (`usize::BITS`)
-//! and vendor.
+//! A silly little library to return target architecture, endianness, pointer width (`usize::BITS`),
+//! vendor and family.
 
 #![no_std]
 
@@ -111,6 +111,19 @@ pub fn vendor() -> &'static str {
         "win7"
     } else if cfg!(target_vendor = "wrs") {
         "wrs"
+    } else {
+        "unknown"
+    }
+}
+
+/// Returns the cfg target_family value.
+pub fn family() -> &'static str {
+    if cfg!(target_family = "unix") {
+        "unix"
+    } else if cfg!(target_family = "wasm") {
+        "wasm"
+    } else if cfg!(target_family = "windows") {
+        "windows"
     } else {
         "unknown"
     }
