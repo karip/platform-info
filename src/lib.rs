@@ -40,6 +40,42 @@ pub fn pointer_width() -> u32 {
     usize::BITS
 }
 
+pub fn vendor() -> &'static str {
+    if cfg!(target_vendor = "apple") {
+        "apple"
+    } else if cfg!(target_vendor = "espressif") {
+        "espressif"
+    } else if cfg!(target_vendor = "fortanix") {
+        "fortanix"
+    } else if cfg!(target_vendor = "ibm") {
+        "ibm"
+    } else if cfg!(target_vendor = "kmc") {
+        "kmc"
+    } else if cfg!(target_vendor = "nintendo") {
+        "nintendo"
+    } else if cfg!(target_vendor = "nvidia") {
+        "nvidia"
+    } else if cfg!(target_vendor = "pc") {
+        "pc"
+    } else if cfg!(target_vendor = "risc0") {
+        "risc0"
+    } else if cfg!(target_vendor = "sony") {
+        "sony"
+    } else if cfg!(target_vendor = "sun") {
+        "sun"
+    } else if cfg!(target_vendor = "unikraft") {
+        "unikraft"
+    } else if cfg!(target_vendor = "uwp") {
+        "uwp"
+    } else if cfg!(target_vendor = "win7") {
+        "win7"
+    } else if cfg!(target_vendor = "wrs") {
+        "wrs"
+    } else {
+        "unknown"
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
