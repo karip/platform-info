@@ -25,6 +25,6 @@ jobs:
         uses: taiki-e/setup-cross-toolchain-action@v1.28.3
         with:
           target: ${{ matrix.target }}
-      # for each target in matrix.target, setup-cross-toolchain-action sets
-      # the `CARGO_BUILD_TARGET` environment variable for this command:
+      # for each target in matrix.target, setup-cross-toolchain-action sets the
+      # `CARGO_BUILD_TARGET` and possibly `CARGO_TARGET_.._RUNNER` env vars for this command:
       - run: cargo test --verbose -- --nocapture

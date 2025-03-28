@@ -1,5 +1,7 @@
 //! A silly little library to return CPU architecture, endianness and pointer width (`usize::BITS`).
 
+#![no_std]
+
 /// Returns the cfg target_arch value.
 pub fn arch() -> &'static str {
     if cfg!(target_arch = "aarch64") {
@@ -41,14 +43,6 @@ pub fn pointer_width() -> u32 {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn print_values() {
-        println!("-*-*-*-");
-        println!("CPU architecture: {}", arch());
-        println!("Endianness: {}", endianness());
-        println!("Pointer width (usize::BITS): {} bits", pointer_width());
-    }
 
     #[test]
     fn test_pointer_width() {
